@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gráficas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-8">
+  <div class="max-w-7xl mx-auto">
+    <h1 class="text-4xl font-extrabold text-center text-gray-800 mb-12">Gráficas Generadas</h1>
+
+    <div class="flex justify-center mb-10">
+      <a href="/" class="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-6 rounded-full transition">← Volver al Inicio</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Lista de imágenes -->
+      {% for image in [
+        'barplot_COUNTRY.png', 'barplot_STATUS.png', 'barplot_PRODUCTLINE.png', 'barplot_DEALSIZE.png', 'barplot_Motorcycles.png',
+        'line_ventas_fecha.png', 'heatmap_corr.png', 'scatter_matrix.png',
+        'elbow_kmeans.png', 'elbow_autoencoder.png',
+        'pca_2d_before_autoencoder.png', 'pca_3d_before_autoencoder.png',
+        'pca_2d_after_autoencoder.png', 'pca_3d_after_autoencoder.png',
+        'hist_SALES_before.png', 'hist_PRICEEACH_before.png', 'hist_QUANTITYORDERED_before.png',
+        'hist_SALES_after.png', 'hist_PRICEEACH_after.png', 'hist_QUANTITYORDERED_after.png'
+      ] %}
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition">
+          <img src="/static/images/{{ image }}" alt="{{ image }}" class="w-full h-60 object-contain p-4 bg-gray-50">
+          <div class="px-6 py-4">
+            <h2 class="text-center text-sm font-semibold text-gray-700">{{ image.replace('.png', '').replace('_', ' ') }}</h2>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</body>
+</html>
